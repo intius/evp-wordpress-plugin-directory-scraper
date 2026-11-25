@@ -1,0 +1,114 @@
+{
+  "name": "WordPress Plugin Directory Scraper to webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 8,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "66316cdd-2cb3-4595-a7a7-fdb6a2546db4",
+      "name": "Run every morning",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "Actors",
+        "operation": "Run actor and get dataset",
+        "actorSource": "store",
+        "actorInputMode": "json",
+        "actorId": {
+          "__rl": true,
+          "value": "nUwIGi5Ptfue0q10r",
+          "mode": "list",
+          "cachedResultName": "evpp/wordpress-plugin-directory",
+          "cachedResultUrl": "https://apify.com/evpp/wordpress-plugin-directory"
+        },
+        "customBody": "{\n  \"searchTerm\": \"seo\",\n  \"maxItems\": 25\n}",
+        "timeout": 300,
+        "memory": 512,
+        "build": "latest",
+        "authentication": "apifyApi"
+      },
+      "id": "0ad201a1-731f-43cc-b645-bfc0f4615971",
+      "name": "Run WordPress Plugin Directory Scraper",
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        280,
+        0
+      ],
+      "credentials": {
+        "apifyApi": {
+          "name": "<your credential>"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://webhook.site/your-unique-url",
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={{ $json }}",
+        "options": {}
+      },
+      "id": "d8c61b0f-bcc2-4d87-919b-ffc913eb91fd",
+      "name": "Send results to webhook",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Run every morning": {
+      "main": [
+        [
+          {
+            "node": "Run WordPress Plugin Directory Scraper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run WordPress Plugin Directory Scraper": {
+      "main": [
+        [
+          {
+            "node": "Send results to webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": [
+    "apify",
+    "web-scraping",
+    "wordpress-plugin-directory"
+  ]
+}
