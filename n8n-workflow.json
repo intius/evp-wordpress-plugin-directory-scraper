@@ -13,7 +13,7 @@
           ]
         }
       },
-      "id": "80b2c3fb-de5f-4670-a38e-a57b01ee1fbc",
+      "id": "20a4cdb5-9a22-4786-a524-2f7ba68c76e0",
       "name": "Run every morning",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
@@ -41,7 +41,7 @@
         "build": "latest",
         "authentication": "apifyApi"
       },
-      "id": "a7e0ea02-10d5-46dd-a74c-ae332a5989a0",
+      "id": "421f6d0c-c8b2-4272-a64c-b932019ea2e5",
       "name": "Run WordPress Plugin Directory Scraper",
       "type": "@apify/n8n-nodes-apify.apify",
       "typeVersion": 1,
@@ -60,11 +60,11 @@
         "method": "POST",
         "url": "https://webhook.site/your-unique-url",
         "sendBody": true,
-        "contentType": "json",
-        "body": "={{ $json }}",
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "76b827bf-3af7-4b4b-8c11-a89479de18e8",
+      "id": "23070292-f56d-46d4-bda5-c1d9f75420b4",
       "name": "Send results to webhook",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
