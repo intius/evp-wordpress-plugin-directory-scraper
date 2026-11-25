@@ -13,7 +13,7 @@
           ]
         }
       },
-      "id": "66316cdd-2cb3-4595-a7a7-fdb6a2546db4",
+      "id": "80b2c3fb-de5f-4670-a38e-a57b01ee1fbc",
       "name": "Run every morning",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
@@ -41,7 +41,7 @@
         "build": "latest",
         "authentication": "apifyApi"
       },
-      "id": "0ad201a1-731f-43cc-b645-bfc0f4615971",
+      "id": "a7e0ea02-10d5-46dd-a74c-ae332a5989a0",
       "name": "Run WordPress Plugin Directory Scraper",
       "type": "@apify/n8n-nodes-apify.apify",
       "typeVersion": 1,
@@ -64,7 +64,7 @@
         "body": "={{ $json }}",
         "options": {}
       },
-      "id": "d8c61b0f-bcc2-4d87-919b-ffc913eb91fd",
+      "id": "76b827bf-3af7-4b4b-8c11-a89479de18e8",
       "name": "Send results to webhook",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
